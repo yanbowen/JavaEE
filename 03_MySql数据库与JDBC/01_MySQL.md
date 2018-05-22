@@ -4,7 +4,7 @@
 
 <hr width = "50%">  
 
-## 三、MySQL（Structured Query Language）    
+## 三、MySQL01（Structured Query Language）    
 
 </center>    
      
@@ -35,7 +35,7 @@ mysql -u root -proot
 	// 创建数据库 并制定字符集
 	create database mydatabase set utf8;    
    
-##详细见 Android 15-day  16-day    
+##详细见 IDEA 15-day  16-day    
    
 	create database 数据库名   
 	   
