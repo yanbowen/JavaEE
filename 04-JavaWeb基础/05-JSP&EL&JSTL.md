@@ -605,3 +605,73 @@ ${ 对象名.成员 }
 			</tr>
 		</c:forEach>
 	</table>
+    
+    
+##总结：
+
+* JSP
+
+  	三大指令
+
+  		page
+  		include
+  		taglib
+  	
+  	三个动作标签
+  		<jsp:include>
+  		<jsp:forward>
+  		<jsp:param>
+
+
+  	九个内置对象
+
+  		四个作用域
+  			pageContext
+  			request
+  			session
+  			application
+  	
+  		out
+  		exception
+  		response
+  		page
+  		config
+
+
+​			
+
+* EL
+
+  ${ 表达式 }
+
+  取4个作用域中的值
+
+  	${ name }
+
+  有11个内置对象。
+
+  	pageContext
+
+  	pageScope
+  	requestScope
+  	sessionScope
+  	applicationScope
+  	
+  	header
+  	headerValues
+  	
+  	param
+  	paramValues
+  	
+  	cookie
+  	initParam
+
+* JSTL
+
+> 使用1.1的版本， 支持EL表达式， 1.0不支持EL表达式
+
+> 拷贝jar包， 通过taglib 去引入标签库
+
+	<c:set>
+	<c:if>
+	<c:forEach>
