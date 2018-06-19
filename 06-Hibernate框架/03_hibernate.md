@@ -101,3 +101,43 @@
 
 ![icon](img/03-img16-hibernate.png)       
    
+* 多对多测试
+
+![icon](img/03-img17-hibernate.png)      
+   
+  
+### Hibernate的多对多的操作
+只保存一边是否可以（不可以）（瞬时对象异常）（使用级联解决）   
+   
+
+### Hibernate的多对多级联保存  
+   
+保存用户级联保存角色   
+
+![icon](img/03-img18-hibernate.png)     
+   
+保存角色级联保存用户  
+  
+![icon](img/03-img19-hibernate.png)   
+      
+
+### 多对多的级联删除（基本用不上）   
+    
+删除用户级联删除角色   
+   
+![icon](img/03-img20-hibernate.png)   
+   
+删除角色级联删除用户  
+   
+![icon](img/03-img21-hibernate.png)   
+   
+### 多对多的其他的操作   
+
+给用户添加角色   
+   
+![icon](img/03-img22-hibernate.png)   
+   
+给用户改选角色（删除就只有remove，不添加）   
+   
+![icon](img/03-img23-hibernate.png)   
+   
