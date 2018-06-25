@@ -2,7 +2,7 @@
 
 >在使用Struts2的框架的过程中，发现Struts2和Servlet的API是解耦合的。在实际开发中，经常使用到Servlet的API，比如进行登录，将用户的信息保存到Session中，有的时候需要向页面输出一些内容，用到response对象。涉及到Servlet的API的访问。   
 
-### 1.完全解耦合的方式   
+### 1.完全解耦合的方式（掌握）   
    
 编写JSP  
 ![icon](img/02-img01-Struts2.png)    
@@ -23,7 +23,7 @@
   
 >**注意：这种方式可以操作域对象的数据，同时也可以获得对象的方法。**
   
-### 3.接口注入的方式   
+### 3.接口注入的方式（了解）   
    
 编写Action    
    
@@ -47,7 +47,7 @@ Servlet是单例的，多个程序访问同一个Servlet只会创建一个Servle
 针对当前的action有效。
    
    
-### result标签的配置     
+### result标签的配置 （掌握）    
    
 result标签用于配置页面的跳转。在result标签上有两个属性：   
 
@@ -101,7 +101,7 @@ result标签用于配置页面的跳转。在result标签上有两个属性：
 * NONE
 
    
-## Struts2的复杂类型的数据封装     
+## Struts2的复杂类型的数据封装（了解）     
    
 ### 1.封装数据到List集合中   
      
@@ -116,7 +116,43 @@ result标签用于配置页面的跳转。在result标签上有两个属性：
   
 ### 2.封装数据到Map集合中    
    
+![icon](img/02-img17-Struts2.png)      
+   
+![icon](img/02-img18-Struts2.png)     
+    
+![icon](img/02-img19-Struts2.png)  
+     
+---
 
+## 综合练习CRM：保存客户     
    
-   
+### 第一步：修改菜单页面上链接：
   
+![icon](img/02-img20-Struts2.png)  
+     
+### 第二步：编写Action中的saveUI的方法   
+   
+![icon](img/02-img21-Struts2.png)  
+   
+### 第三步：配置页面跳转   
+   
+![icon](img/02-img22-Struts2.png)   
+   
+### 第四步：修改添加页面   
+   
+![icon](img/02-img23-Struts2.png)    
+   
+### 第五步：完成保存操作   
+   
+编写Action    
+   
+![icon](img/02-img24-Struts2.png)    
+    
+编写Service    
+   
+![icon](img/02-img25-Struts2.png)    
+   
+编写DAO   
+    
+![icon](img/02-img26-Struts2.png)    
+   
