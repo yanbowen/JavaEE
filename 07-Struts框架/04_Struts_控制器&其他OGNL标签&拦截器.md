@@ -42,3 +42,53 @@ Struts2框架核心的功能都是依赖拦截器实现。
 
 ![icon](img/04-img06-Struts2.png)      
    
+   
+## CRM的权限拦截器    
+    
+>实现用户登录的功能    
+
+![icon](img/04-img09-Struts2.png)  
+     
+### 创建表和实体    
+   
+   
+	CREATE TABLE `sys_user` (
+	  `user_id` bigint(32) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+	  `user_code` varchar(32) NOT NULL COMMENT '用户账号',
+	  `user_name` varchar(64) NOT NULL COMMENT '用户名称',
+	  `user_password` varchar(32) NOT NULL COMMENT '用户密码',
+	  `user_state` char(1) NOT NULL COMMENT '1:正常,0:暂停',
+	  PRIMARY KEY (`user_id`)
+	) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;   
+   
+   
+![icon](img/04-img07-Struts2.png)   
+  
+
+### 提交数据到Action      
+      
+![icon](img/04-img10-Struts2.png)     
+   
+### Action--->Service--->DAO
+   
+编写Service   
+   
+![icon](img/04-img11-Struts2.png)       
+   
+![icon](img/04-img12-Struts2.png)       
+  
+### 根据结果进行页面跳转    
+  
+![icon](img/04-img13-Struts2.png)           
+   
+## 实现权限拦截器    
+   
+### 编写权限拦截器   
+   
+![icon](img/04-img14-Struts2.png)   
+   
+   
+### 配置拦截器   
+   
+![icon](img/04-img15-Struts2.png)   
+   
