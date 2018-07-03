@@ -87,3 +87,36 @@ Mybatis是面向sql的持久层框架，他封装了jdbc访问数据库的过程
 ![icon](img/01/img11-Mybatis.png)   
    
 ![icon](img/01/img12-Mybatis.png)   
+   
+  
+### Mybatis架构图
+   
+![icon](img/01/img13-Mybatis.png)   
+   
+## 原始Dao开发方法   
+   
+![icon](img/01/img14-Mybatis.png)   
+   
+![icon](img/01/img15-Mybatis.png)   
+  
+![icon](img/01/img16-Mybatis.png)   
+  
+## 官方推荐，接口动态代理  
+   
+### 动态代理dao开发规则   
+   
+	1.namespace必需是接口的全路径名
+	2.接口的方法名必需与映射文件的sql id一致
+	3.接口的输入参数必需与映射文件的parameterType类型一致
+	4.接口的返回类型必须与映射文件的resultType类型一致   
+   
+   
+![icon](img/01/img17-Mybatis.png)   
+   
+![icon](img/01/img18-Mybatis.png)   
+   
+![icon](img/01/img19-Mybatis.png)   
+   
+   
+### SqlMapConf.xml配置    
+   
