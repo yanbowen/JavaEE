@@ -141,36 +141,54 @@
   
 ### 四个作用域的区别
 
-* pageContext 【PageContext】
+* pageContext 	【PageContext】
 
 > 作用域仅限于当前的页面。  
+> 还可以获取到其他八个内置对象。  
+> 对应的类型是 PageContext . 该对象是四个作用域之一， 一般使用该对象来存取值 以及 获取其他八个内置对象（但是由于其他内置对象都可以直接使用，所以该作用一般比较少用了）
 
-> 还可以获取到其他八个内置对象。
+* request 		【HttpServletRequest】
 
-* request 【HttpServletRequest】
+> 作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。   
+> 该对象是 HttpServletRequest 的实例， 在这里的使用手法与java 代码中的使用手法是一样的。 该对象是四个作用域之一 ， 通常在 jsp 页面用来存取值 和 跳转。
 
-> 作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。
+* session 		【HttpSession】
 
-* session 【HttpSession】
-
-> 作用域限于一次会话（多次请求与响应） 当中。 
-
-* application 【ServletContext】
-
-> 整个工程都可以访问， 服务器关闭后就不能访问了。 
-
-
+> 作用域限于一次会话（多次请求与响应） 当中。     
+> 默认情况下， jsp 翻译成 java 文件后， 会在里面的方法调用 request.getSession().  那么咱们可以直接在 jsp 里面使用 session 对象。     
+> 当然这有一个开关来确定的。 即， 在顶部的 page 指令里面有一个属性叫做 ： session="true" 默认即是 true, 如果是 true , 那么就会创建 session 对象。   
+> 所以可以连起来理解就是 ： 如果顶部的 page 指令中的 session 属性 的值 是 false , 那么我们在 jsp 页面上，将无法使用 session 对象。因为翻译成的 java 类中，根本没有创建这个对象。 我们一般使用这个对象来存取值。 它是四个作用域之一   
 
 
-- out		 【JspWriter】
-  - response  【HttpServletResponse】
+
+* application 	【ServletContext】
+
+> 整个工程都可以访问， 服务器关闭后就不能访问了。     
+> 该对象是 ServletContext 类的实例， 可以做ServletContext的事情。 但是一般在jsp页面里面，我们使用该对象，多数情况都是来进行存值和取值。它是四个作用域之一
+
+
+* out		 	【JspWriter】     
+>该对象其实是 JspWriter 的实例 ， 页面上的内容都是靠该对象去执行输出的。
+
+- response  	【HttpServletResponse】
 
 ![icon](img/img01-jsp.png)
 
 
-- exception  【Throwable】
-  - page	 【Object】 ---就是这个jsp翻译成的java类的实例对象
-    - config 【ServletConfig】
+- exception  	【Throwable】    
+>这个对象，默认 jsp 是不会创建的， 只有在 page 指令里面写上了 isErrorPage="true"  才会创建。 连起来解释的话，就是： 只有错误的页面，才会创建该对象。    
+>使用该对象， 我们可以在错误的页面上，输出错误的信息    
+
+   
+
+- page	 		【Object】   
+>就是这个jsp翻译成的java类的实例对象    
+
+
+
+- config 		【ServletConfig】   
+>该对象其实是 ServletConfig 的实例 我们可以在里面获取 Servlet 配置的一些参数。
+
    
 ## EL表达式
 
@@ -242,40 +260,42 @@ ${表达式 }
 
 4. 取出Map集合的值
 
-   	<%
-   		Map map = new HashMap();
-   		map.put("name", "zhangsna");
-   		map.put("age",18);
-   		map.put("address","北京..");
-   		
-   		map.put("address.aa","深圳..");
-
-
-   		pageContext.setAttribute("map", map);
-   	%>
-   	使用EL表达式取出作用域中Map的值<br>
-   	
-   	${map.name } , ${map.age } , ${map.address }  , ${map["address.aa"] }    
-    
+	   	<%
+	   		Map map = new HashMap();
+	   		map.put("name", "zhangsna");
+	   		map.put("age",18);
+	   		map.put("address","北京..");
+	   		
+	   		map.put("address.aa","深圳..");
+	
+	
+	   		pageContext.setAttribute("map", map);
+	   	%>
+	   	使用EL表达式取出作用域中Map的值<br>
+	   	
+	   	${map.name } , ${map.age } , ${map.address }  , ${map["address.aa"] }    
+	    
 ### 取值细节：
 
-1. 
-   从域中取值。  得先存值。
-   <%
+   
 
-   	//pageContext.setAttribute("name", "zhangsan");
-   	session.setAttribute("name", "lisi...");
-   %>
-
-   <br>直接指定说了，到这个作用域里面去找这个name<br>
-   ${ pageScope.name } 
-
-
-   <br>//先从page里面找，没有去request找，去session，去application <br>
-   ${ name }
-
-   <br>指定从session中取值<br>
-   ${ sessionScope.name }  
+	   从域中取值。  得先存值。
+	   <%
+	
+	   	//pageContext.setAttribute("name", "zhangsan");
+	   	session.setAttribute("name", "lisi...");
+	   %>
+	
+	   <br>直接指定说了，到这个作用域里面去找这个name<br>
+	   ${ pageScope.name } 
+	
+	
+	   <br>//先从page里面找，没有去request找，去session，去application <br>
+	   ${ name }
+	
+	   <br>指定从session中取值<br>
+	   ${ sessionScope.name }  
+    
 
 2. 取值方式
 
@@ -470,6 +490,8 @@ ${ 对象名.成员 }
 				}
 				return false;
 			}
+
+
 		
 		}
 
