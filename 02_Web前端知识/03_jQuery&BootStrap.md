@@ -8,7 +8,13 @@
 
 </center>     
    
-jQuery是一个快速、简洁的JavaScript框架  
+jQuery是一个快速、简洁的JavaScript框架     
+  
+	$("button").click(function(){
+	    $.post("demo_test.html",function(data,status){
+	        alert("Data: " + data + "nStatus: " + status);
+	    });
+	});
   
 ![](https://i.imgur.com/jkUSZMr.png)
     

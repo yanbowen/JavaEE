@@ -35,6 +35,8 @@
 									tar -zxvf ./xxx.tar
 	reboot		重启
 	halt		关机
+
+	chmod		命令用来变更文件或目录的权限
 	
 	rpm -qa | grep java 查看本机上所有已经安装成功的软件，只查看java
  	
